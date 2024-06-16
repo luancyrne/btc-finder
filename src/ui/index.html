@@ -19,17 +19,38 @@
             <img id="logo" src="./assets/images/Icon.png">
             <label>BTC Finder</label>
         </div>
-        <div  id="drag-area" style="-webkit-app-region: drag; width: 556px;">
+        <div id="drag-area" style="-webkit-app-region: drag;">
 
         </div>
         <div class="overlayManipulation">
-            <img id="minimize" src="./assets/images/Minimize.png"  style="margin-bottom: 15px;">
+            <img id="minimize" src="./assets/images/Minimize.png" style="margin-bottom: 12px;">
             <img id="zoomOut" src="./assets/images/ZoomOut.png">
             <img id="zoomIn" src="./assets/images/ZoomIn.png">
             <img id="close" src="./assets/images/Close.png">
         </div>
     </div>
-    <script src="./assets/scripts/windowManipulation.js"></script>
+    <div id="process">
+        <aside class="menu">
+
+        </aside>
+        <main>
+            <img id="settings" src="./assets/images/Settings.png">
+        </main>
+        <script>
+            let openMenu = false;
+            const handleMenu = () => {
+                if (!openMenu) {
+                    openMenu = true
+                    return document.getElementById('process').style.gridTemplateColumns = '0px auto'
+                }
+                openMenu = false
+                return document.getElementById('process').style.gridTemplateColumns = '150px auto'
+            }
+
+            document.getElementById('settings').addEventListener('click', handleMenu)
+        </script>
+        <script src="./assets/scripts/windowManipulation.js"></script>
+    </div>
 </body>
 
 </html>
