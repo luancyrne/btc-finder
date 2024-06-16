@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path');
+const package = require('../package.json');
 require('./interceptor/api');
 
 
@@ -38,6 +39,7 @@ const createWindow = () => {
     })
 }
 
+ipcMain.on('end-loaded', (e) => e.reply('version', package.version))
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()

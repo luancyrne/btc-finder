@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    ipcRenderer.send('end-loaded')
+    ipcRenderer.on('version', (e, data) => {
+        document.getElementById('version').textContent = data
+    })
     document.querySelector('#close').addEventListener('click', () => {
         ipcRenderer.send('close')
     })

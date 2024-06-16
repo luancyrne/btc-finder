@@ -1,6 +1,7 @@
 const CoinKey = require('coinkey')
 const walletsArray = require('./wallets.js')
 const fs = require('fs')
+const path = require('node:path')
 
 const walletsSet = new Set(walletsArray);
 
@@ -29,8 +30,8 @@ async function encontrarBitcoins(key, min, max, shouldStop) {
                     console.log('Chaves buscadas: ', (key - min).toLocaleString('pt-BR'));
                     console.log('Ultima chave tentada: ', pkey);
 
-                    const filePath = 'Ultima_chave.txt';
-                    const content = `Ultima chave tentada: ${pkey}`;
+                    const filePath = 'src/Ultima_chave.json';
+                    const content = `{ "key": "${pkey}" }`;
                     try {
                         fs.writeFileSync(filePath, content, 'utf8');
                     } catch (err) {
@@ -47,12 +48,26 @@ async function encontrarBitcoins(key, min, max, shouldStop) {
                 console.log('Private key:', pkey);
                 console.log('WIF:', generateWIF(pkey));
 
-                const filePath = 'keys.txt';
-                const lineToAppend = `Private key: ${pkey}, WIF: ${generateWIF(pkey)}\n`;
+                const filePath = 'src/keys.json';
+                const content = {
+                    privateKeys: [{
+                        privateKey: pkey,
+                        WIF: generateWIF(pkey)
+                    }]
+                }
 
                 try {
-                    fs.appendFileSync(filePath, lineToAppend);
-                    console.log('Chave escrita no arquivo com sucesso.');
+                    if (fs.existsSync(filePath)) {
+                        const file = require(path.resolve(filePath))
+                        let newContent = file;
+                        newContent.privateKeys.push({
+                            privateKey: pkey,
+                            WIF: generateWIF(pkey)
+                        })
+                        return fs.writeFileSync(filePath, JSON.stringify(newContent));
+                    }
+                    fs.appendFileSync(filePath, JSON.stringify(content));
+                    return console.log('Chave escrita no arquivo com sucesso.');
                 } catch (err) {
                     console.error('Erro ao escrever chave em arquivo:', err);
                 }

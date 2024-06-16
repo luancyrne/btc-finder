@@ -88,9 +88,14 @@ body {
     transition: all 0.5s ease-in 0s;
 }
 
-aside {
+.menu {
     grid-area: menu;
     background: #2d3436;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
 }
 
 main {
@@ -106,6 +111,22 @@ main {
 #settings:hover {
     -webkit-animation: rotate-center 0.6s ease-in-out both;
     animation: rotate-center 0.6s ease-in-out both;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 5px;
+}
+
+.copyright>a {
+    text-decoration: none;
+    outline-style: double;
+    color: antiquewhite;
+    outline-color: #9d7647;
+    font-size: 12px;
 }
 
 @-webkit-keyframes rotate-center {
