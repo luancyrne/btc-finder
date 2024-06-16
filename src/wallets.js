@@ -163,4 +163,4 @@ const wallets = [
 ];
 
 
-export default wallets
+module.exports = wallets

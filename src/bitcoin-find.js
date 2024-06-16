@@ -1,7 +1,6 @@
-import CoinKey from 'coinkey';
-import walletsArray from './wallets.js';
-import chalk from 'chalk';
-import fs from 'fs';
+const CoinKey = require('coinkey')
+const walletsArray = require('./wallets.js')
+const fs = require('fs')
 
 const walletsSet = new Set(walletsArray);
 
@@ -45,8 +44,8 @@ async function encontrarBitcoins(key, min, max, shouldStop) {
                 const tempo = (Date.now() - startTime) / 1000;
                 console.log('Velocidade:', (Number(key) - Number(min)) / tempo, ' chaves por segundo');
                 console.log('Tempo:', tempo, ' segundos');
-                console.log('Private key:', chalk.green(pkey));
-                console.log('WIF:', chalk.green(generateWIF(pkey)));
+                console.log('Private key:', pkey);
+                console.log('WIF:', generateWIF(pkey));
 
                 const filePath = 'keys.txt';
                 const lineToAppend = `Private key: ${pkey}, WIF: ${generateWIF(pkey)}\n`;
@@ -87,4 +86,4 @@ function generateWIF(privateKey) {
     return _key.privateWif;
 }
 
-export default encontrarBitcoins;
+module.exports = encontrarBitcoins;

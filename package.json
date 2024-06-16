@@ -2,15 +2,17 @@
   "name": "btc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/start.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "electron ./src/start.js",
+    "dev": "nodemon --exec electron ./src/start.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.3.0",
-    "coinkey": "^3.0.0"
+    "coinkey": "^3.0.0",
+    "electron": "^31.0.1",
+    "nodemon": "^3.1.3"
   }
 }

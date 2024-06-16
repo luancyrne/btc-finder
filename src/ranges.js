@@ -161,4 +161,4 @@ const ranges = [
   { min: "0x8000000000000000000000000000000000000000", max: "0xffffffffffffffffffffffffffffffffffffffff" }
 ];
 
-export default ranges;
+module.exports = ranges;
