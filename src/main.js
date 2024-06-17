@@ -37,9 +37,9 @@ rl.question(`Escolha uma carteira puzzle( ${1} - ${160}): `, (answer) => {
     console.log('Numero possivel de chaves:',  parseInt(BigInt(max) - BigInt(min)).toLocaleString('pt-BR'))
     let status = ''
     if (ranges[answer-1].status == 1){
-        status =  chalk.red('Encontrada')
+        status =  'Encontrada'
     } else  {
-        status =  chalk.green('Nao Encontrada')
+        status =  'Nao Encontrada'
     }
 
     console.log('Status: ', status)
