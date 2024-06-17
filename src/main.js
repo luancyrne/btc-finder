@@ -1,4 +1,4 @@
-﻿const ranges = require('./ranges.js')
+const ranges = require('./ranges.js')
 const encontrarBitcoins = require('./bitcoin-find.js')
 const readline = require('readline')
 
@@ -23,7 +23,7 @@ console.log("\x1b[38;2;250;128;114m" + "╔════════════�
             "║" + "\x1b[0m" + "\x1b[36m" + "  | |_) || || |___  |  _|  | || |\\  | |_| | |___|  _ <  " + "\x1b[0m" + "\x1b[38;2;250;128;114m" + "║\n" +
             "║" + "\x1b[0m" + "\x1b[36m" + "  |____/ |_| \\____| |_|   |___|_| \\_|____/|_____|_| \\_\\ " + "\x1b[0m" + "\x1b[38;2;250;128;114m" + "║\n" +
             "║" + "\x1b[0m" + "\x1b[36m" + "                                                        " + "\x1b[0m" + "\x1b[38;2;250;128;114m" + "║\n" +
-            "╚══════════════════════\x1b[32m" + "Investidor Internacional - v0.4" + "\x1b[0m\x1b[38;2;250;128;114m═══╝" + "\x1b[0m");
+            "╚══════════════════════\x1b[32m" + "Investidor Internacional - v0.5" + "\x1b[0m\x1b[38;2;250;128;114m═══╝" + "\x1b[0m");
 
 rl.question(`Escolha uma carteira puzzle( ${1} - ${160}): `, (answer) => {
     
@@ -35,6 +35,14 @@ rl.question(`Escolha uma carteira puzzle( ${1} - ${160}): `, (answer) => {
     max = ranges[answer-1].max
     console.log('Carteira escolhida: ', answer, ' Min: ', min, ' Max: ', max )
     console.log('Numero possivel de chaves:',  parseInt(BigInt(max) - BigInt(min)).toLocaleString('pt-BR'))
+    let status = ''
+    if (ranges[answer-1].status == 1){
+        status =  chalk.red('Encontrada')
+    } else  {
+        status =  chalk.green('Nao Encontrada')
+    }
+
+    console.log('Status: ', status)
     key = BigInt(min)
     
     rl.question(`Escolha uma opcao (${1} - Comecar do inicio, ${2} - Escolher uma porcentagem, ${3} - Escolher minimo): `, (answer2) => {
