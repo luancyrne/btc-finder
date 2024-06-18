@@ -1,4 +1,4 @@
-const ranges = require('./ranges.js')
+const ranges = require('./data/ranges.js')
 const encontrarBitcoins = require('./bitcoin-find.js')
 const readline = require('readline')
 

@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 const CoinKey = require('coinkey')
-const walletsArray = require('./wallets.js')
+const walletsArray = require('./data/wallets')
 const fs = require('fs')
 const path = require('node:path')
-=======
-import CoinKey from 'coinkey';
-import walletsArray from './data/wallets.js';
-import chalk from 'chalk';
-import fs from 'fs';
->>>>>>> c8d26161d2c5941f8c73e8f6937a41cb44cd8113
 
 const walletsSet = new Set(walletsArray);
 

@@ -2,17 +2,11 @@
   "name": "btc",
   "version": "1.1.0",
   "description": "",
-<<<<<<< HEAD
   "main": "./src/start.js",
   "scripts": {
     "start": "electron ./src/start.js",
     "terminal": "node ./src/main.js",
     "dev": "nodemon --exec electron ./src/start.js"
-=======
-  "main": "src/main.js",
-  "scripts": {
-    "start": "node src/main.js"
->>>>>>> c8d26161d2c5941f8c73e8f6937a41cb44cd8113
   },
   "type": "commonjs",
   "author": "",
