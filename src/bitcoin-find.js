@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 const CoinKey = require('coinkey')
 const walletsArray = require('./wallets.js')
 const fs = require('fs')
 const path = require('node:path')
+=======
+import CoinKey from 'coinkey';
+import walletsArray from './data/wallets.js';
+import chalk from 'chalk';
+import fs from 'fs';
+>>>>>>> c8d26161d2c5941f8c73e8f6937a41cb44cd8113
 
 const walletsSet = new Set(walletsArray);
 
-async function encontrarBitcoins(key, min, max, shouldStop) {
+async function encontrarBitcoins(key, min, max) {
     let segundos = 0;
     const startTime = Date.now();
 
@@ -13,8 +20,9 @@ async function encontrarBitcoins(key, min, max, shouldStop) {
 
     console.log('Buscando Bitcoins...');
 
+    let running = true
     const executeLoop = async () => {
-        while (!shouldStop()) {
+        while (running) {
             key++;
             let pkey = key.toString(16);
             pkey = `${zeroes[pkey.length]}${pkey}`;
@@ -72,7 +80,8 @@ async function encontrarBitcoins(key, min, max, shouldStop) {
                     console.error('Erro ao escrever chave em arquivo:', err);
                 }
 
-                throw 'ACHEI!!!! 🎉🎉🎉🎉🎉';
+                console.log('ACHEI!!!! 🎉🎉🎉🎉🎉')
+                running = false
             }
 
             await new Promise(resolve => setImmediate(resolve));
@@ -84,6 +93,7 @@ async function encontrarBitcoins(key, min, max, shouldStop) {
     } catch (err) {
         if (err !== 'ACHEI!!!! 🎉🎉🎉🎉🎉') {
             console.error('Erro inesperado:', err);
+            running = false
         }
     }
 
