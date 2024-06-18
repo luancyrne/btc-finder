@@ -1,4 +1,4 @@
-import fazerPergunta from './fazerPergunta.js'
+const fazerPergunta = require('./fazerPergunta.js')
 
 function addPrefixMin(answer) {
     const input = answer.replace(/^0x/i, ''); // remove '0x' prefix
@@ -14,4 +14,4 @@ async function escolherMinimo(min) {
     return [min, key]
 }
 
-export default escolherMinimo
+module.exports = escolherMinimo

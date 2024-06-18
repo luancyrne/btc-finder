@@ -1,5 +1,5 @@
-import rl from './readInterface.js'
+const rl = require('./readInterface.js')
 
-export default function fazerPergunta(pergunta) {
+module.exports = function fazerPergunta(pergunta) {
     return new Promise((resolve) => rl.question(pergunta, resolve))
 }

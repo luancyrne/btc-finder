@@ -1,5 +1,4 @@
-import chalk from 'chalk'
-import fazerPergunta from './fazerPergunta.js'
+const fazerPergunta = require('./fazerPergunta.js')
 
 async function validaEscolherPorcentagem() {
     while (true) {
@@ -28,4 +27,4 @@ async function escolherPorcentagem(min, max) {
     return [min, max, key];
 }
 
-export default escolherPorcentagem
+module.exports = escolherPorcentagem
