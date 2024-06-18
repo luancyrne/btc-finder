@@ -23,7 +23,7 @@ async function escolherPorcentagem(min, max) {
     const percentualRange = range * BigInt(Math.floor(parseFloat(answer) * 1e18)) / BigInt(1e18);
     min = BigInt(min) + BigInt(percentualRange);
     let key = BigInt(min)
-    console.log('Comecando em: ', chalk.yellow('0x' + min.toString(16)));
+    console.log('Comecando em: ', '0x' + min.toString(16));
     return [min, max, key];
 }
 
