@@ -20,7 +20,7 @@ const createWindow = () => {
         autoHideMenuBar: true
     })
 
-    win.loadFile('./ui/index.html')
+    win.loadFile(path.resolve(__dirname, './ui/index.html'))
 
     ipcMain.on('close', () => {
         win.close()
